@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>삼일교회 지출결의</title>
-  <meta name="description" content="삼일교회 지출결의" />
+  <meta name="description" content="삼일교회 재정부 지출결의 시스템" />
   <meta name="theme-color" content="#4f7c53" />
 
   <!-- 카톡/공유 미리보기 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="삼일교회 지출결의" />
-  <meta property="og:description" content="삼일교회 지출결의" />
+  <meta property="og:description" content="삼일교회 재정부 지출결의 시스템" />
   <meta property="og:image" content="https://habera22-prog.github.io/samil-expense/share.png" />
 
   <!-- 홈 화면 추가용 -->
@@ -21,8 +21,7 @@
 
   <style>
     :root {
-      --bg: #f4f7f3;
-      --card: rgba(255,255,255,0.94);
+      --card: rgba(255,255,255,0.95);
       --line: rgba(79,124,83,0.12);
       --text: #223122;
       --muted: #667266;
@@ -61,8 +60,6 @@
 
     .card {
       background: var(--card);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.7);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -73,7 +70,6 @@
     .top-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       background: #ffffff;
       color: var(--primary-dark);
       border: 1px solid var(--line);
@@ -117,11 +113,19 @@
       letter-spacing: -0.03em;
     }
 
+    .sub {
+      margin: 12px auto 0;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
     .actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
     .btn {
@@ -208,15 +212,27 @@
             <img src="logo.png" alt="삼일교회 로고" />
           </div>
           <h1>삼일교회 지출결의</h1>
+          <p class="sub">지출결의 신청과 관리자 처리를 위한 온라인 시스템입니다.</p>
         </div>
 
         <div class="actions">
-          <a class="btn btn-primary" href="https://script.google.com/macros/s/AKfycbwOI-s8uZ5BfASBSwhLPbsAVatzZO4sSvsTU8IFfbsLlqgcei2KJwmcZp38o1d_gbhC1w/exec" target="_blank" rel="noopener noreferrer">신청 화면으로 이동</a>
-          <a class="btn btn-secondary" href="https://script.google.com/macros/s/AKfycbykorKRQjyrb0s3BxmGdFkEW6s7CVHyoFnYsJoLgA3guJ6qH7MF5Z8EOZtKoKBWKbNA/exec" target="_blank" rel="noopener noreferrer">관리자 화면으로 이동</a>
+          <a
+            class="btn btn-primary"
+            href="https://script.google.com/macros/s/AKfycbwOI-s8uZ5BfASBSwhLPbsAVatzZO4sSvsTU8IFfbsLlqgcei2KJwmcZp38o1d_gbhC1w/exec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >신청 화면으로 이동</a>
+
+          <a
+            class="btn btn-secondary"
+            href="https://script.google.com/macros/s/AKfycbykorKRQjyrb0s3BxmGdFkEW6s7CVHyoFnYsJoLgA3guJ6qH7MF5Z8EOZtKoKBWKbNA/exec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >관리자 화면으로 이동</a>
         </div>
 
         <div class="footer-note">
-          필요한 화면을 선택해 바로 이동해 주세요.
+          원하시는 화면을 선택해 바로 이동해 주세요.
         </div>
       </div>
     </section>
