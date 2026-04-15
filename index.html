@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>삼일교회 지출결의 시스템</title>
+  <meta name="description" content="삼일교회 지출결의 신청 시스템 안내 페이지입니다." />
+  <meta name="theme-color" content="#4f7c53" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="삼일교회 지출결의 시스템" />
+  <meta property="og:description" content="온라인으로 쉽고 빠르게 지출결의를 신청하세요." />
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=%EC%82%BC%EC%9D%BC%EA%B5%90%ED%9A%8C+%EC%A7%80%EC%B6%9C%EA%B2%B0%EC%9D%98" />
+
+  <link rel="apple-touch-icon" href="https://placehold.co/180x180/png?text=31" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="지출결의" />
+
+  <style>
+    :root {
+      --bg: #f4f7f3;
+      --card: rgba(255,255,255,0.92);
+      --line: rgba(79,124,83,0.12);
+      --text: #223122;
+      --muted: #667266;
+      --primary: #4f7c53;
+      --primary-dark: #3f6643;
+      --shadow: 0 14px 42px rgba(32, 48, 32, 0.10);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(79,124,83,0.10), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(79,124,83,0.06), transparent 30%),
+        linear-gradient(180deg, #f7faf6 0%, #eef4ed 100%);
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px 42px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 760px;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px 22px 22px;
+      animation: fadeUp .55s ease both;
+    }
+
+    .top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: var(--primary-dark);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .brand-mark {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 14px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #edf5ec 100%);
+      border: 1px solid rgba(79,124,83,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(79,124,83,0.08);
+      overflow: hidden;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 12px;
+    }
+
+    .brand-mark-fallback {
+      font-size: 32px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .sub {
+      margin: 12px auto 0;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.72;
+      white-space: pre-line;
+    }
+
+    .notice {
+      margin-top: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbf7 100%);
+      border: 1px solid rgba(79,124,83,0.10);
+      border-radius: 22px;
+      padding: 18px 18px 16px;
+    }
+
+    .notice-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .notice-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .notice-text {
+      color: #536053;
+      font-size: 15px;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 18px 16px;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(79,124,83,0.20);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(79,124,83,0.22);
+    }
+
+    .helper {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .helper-box {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(79,124,83,0.08);
+      border-radius: 18px;
+      padding: 14px 12px;
+    }
+
+    .helper-title {
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .helper-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .card {
+        padding: 24px 16px 18px;
+        border-radius: 24px;
+      }
+
+      .actions,
+      .helper {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        font-size: 17px;
+        padding: 17px 14px;
+      }
+
+      .sub {
+        font-size: 15px;
+      }
+
+      .notice-title {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <section class="shell">
+      <div class="card">
+        <div class="top-badge">💚 삼일교회 행정 시스템</div>
+
+        <div class="brand">
+          <div class="brand-mark">
+            <!-- 실제 로고 URL로 바꾸면 됩니다 -->
+            <!-- <img src="YOUR_LOGO_URL" alt="삼일교회 로고" /> -->
+            <div class="brand-mark-fallback">31</div>
+          </div>
+          <h1>삼일교회 지출결의 시스템</h1>
+          <p class="sub">이제 지출결의를 온라인으로 쉽고 편하게 신청하실 수 있습니다.
+신청자는 신청 화면에서 작성 후 제출하시고,
+관리자는 관리자 화면에서 승인과 공지 관리를 진행하실 수 있습니다.</p>
+        </div>
+
+        <div class="notice">
+          <div class="notice-label">📢 시스템 안내</div>
+          <div class="notice-title">지출결의 신청 시스템이 오픈되었습니다.</div>
+          <div class="notice-text">이름과 PIN으로 로그인 후 지출결의 내용을 입력하시면 됩니다.
+영수증 파일 첨부가 어려운 경우에는 직접 제출로 체크 후 재정팀에 제출해 주세요.</div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://script.google.com/macros/s/AKfycbwOI-s8uZ5BfASBSwhLPbsAVatzZO4sSvsTU8IFfbsLlqgcei2KJwmcZp38o1d_gbhC1w/exec" target="_blank" rel="noopener noreferrer">신청 화면으로 이동</a>
+          <a class="btn btn-secondary" href="https://script.google.com/macros/s/AKfycbykorKRQjyrb0s3BxmGdFkEW6s7CVHyoFnYsJoLgA3guJ6qH7MF5Z8EOZtKoKBWKbNA/exec" target="_blank" rel="noopener noreferrer">관리자 화면으로 이동</a>
+        </div>
+
+        <div class="helper">
+          <div class="helper-box">
+            <div class="helper-title">처음 접속하시는 분</div>
+            <div class="helper-text">이름 선택 후 처음 사용이면 PIN을 먼저 설정해 주세요.</div>
+          </div>
+          <div class="helper-box">
+            <div class="helper-title">신청 후 확인</div>
+            <div class="helper-text">제출 후에는 내 신청내역에서 진행 상태를 확인할 수 있습니다.</div>
+          </div>
+          <div class="helper-box">
+            <div class="helper-title">홈 화면 추가</div>
+            <div class="helper-text">브라우저 메뉴에서 홈 화면에 추가하면 앱처럼 더 편하게 사용할 수 있습니다.</div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          이 페이지는 안내용 입구 화면입니다.<br />
+          실제 신청과 관리는 각 버튼을 눌러 해당 시스템에서 진행해 주세요.
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
